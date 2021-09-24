@@ -80,7 +80,7 @@ textarea {
 }
 .times>div{
   display:grid;
-  align-items:center;
+  align-items: flex-end;
   justify-content:center;
   border-bottom:1px solid black;
 }

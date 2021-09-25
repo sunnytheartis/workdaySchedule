@@ -5,20 +5,33 @@ function currentDate(){
     $("#currentDay").text(thisDate);
 }
 currentDate();
-var saveText = $("#saveBtn2").val()
+//changing block colors based on time
+$(".time-block").children().each(function(){
+    var Time = moment($(this).text(),"h:mm a");
+    var now = moment().format();
 
-function buttonClick() {
-    localStorage.setItem("saveText", JSON.stringify);
+    if (Time.isSame(now, "hour")){
+        $(this).next().addClass('present');
+
+    }if(Time.isAfter(now, 'hour')){
+        $(this).next().addClass('future');
+        
+    }if(Time.isBefore(now,'hour')){
+        $(this).next().addClass('past');
+    }
+    
+
+})
+
+//save values on click
+$(".saveBtn").on('click', storeValues);
+
+
+function storeValues(){
+    var input = $(this).siblings("textarea").val().trim();
+    var value = $(this).parent().attr('id');
+    localStorage.setItem(value,input);
 }
-//function refresh(){
-//    if(hour===now){
-//        textarea.toggleClass("present")
-  //  }
-  //  if(hour<now){
- //       textarea.toggleClass("past")
- //   }
-  //  if (textarea>now){
-  //      textarea.toggleClass("future")
- //   }
-//}
-//refresh();
+
+
+

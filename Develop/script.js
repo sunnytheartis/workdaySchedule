@@ -15,7 +15,7 @@ $(".time-block").children().each(function(){
 
     }if(Time.isAfter(now, 'hour')){
         $(this).next().addClass('future');
-        
+
     }if(Time.isBefore(now,'hour')){
         $(this).next().addClass('past');
     }
